@@ -10,9 +10,3 @@ Guia oficial em formato web sobre como utilizar corretamente o comando `/me` no 
 
 * `index.html` - Código principal da página (HTML/CSS).
 * `Puerto Esperanza - promo.gif` - Logótipo oficial do servidor.
-
-## 🛠️ Como atualizar o site?
-
-1. Abre o ficheiro `index.html`.
-2. Altera o texto ou as regras que quiseres.
-3. Faz *commit* e *push* das alterações para o GitHub. O site atualiza-se sozinho em menos de 1 minuto!
