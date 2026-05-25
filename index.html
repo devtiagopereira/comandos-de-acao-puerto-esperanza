@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puerto Esperanza - Guia de Comando /me</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <style>
+      :root {
+        --bg-principal: #0b0f19;
+        --bg-card: #151d30;
+        --bg-card-header: #1e2942;
+        --txt-primario: #ffffff;
+        --txt-secundario: #94a3b8;
+
+        /* Cores inspiradas no logo Puerto Esperanza */
+        --pe-rosa: #ff477e;
+        --pe-ciano: #00f2fe;
+        --pe-laranja: #ff9f43;
+        --pe-sucesso: #2ec4b6;
+        --pe-perigo: #e63946;
+
+        --border-radius: 12px;
+        --transicao: all 0.3s ease;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-principal);
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--txt-primario);
+        line-height: 1.6;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Topo do Site / Header */
+      .header {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(30, 41, 66, 0.9),
+            rgba(15, 23, 42, 0.95)
+          ),
+          radial-gradient(
+            circle at top right,
+            rgba(255, 71, 126, 0.15),
+            transparent
+          );
+        padding: 40px 30px;
+        text-align: center;
+        border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+        position: relative;
+      }
+
+      .logo-server {
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.3));
+      }
+
+      .badge {
+        display: block;
+        background: linear-gradient(90deg, var(--pe-rosa), var(--pe-laranja));
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 50px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(255, 71, 126, 0.3);
+      }
+
+      .header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+      }
+
+      .header h1 span {
+        color: var(--pe-ciano);
+        text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+      }
+
+      .header p {
+        font-size: 15px;
+        color: var(--txt-secundario);
+        margin-bottom: 20px;
+      }
+
+      .cmd-box {
+        display: inline-block;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        font-weight: bold;
+        background: #070a12;
+        border: 1px solid rgba(0, 242, 254, 0.3);
+        border-radius: 8px;
+        padding: 8px 24px;
+        color: var(--pe-ciano);
+        box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.1);
+      }
+
+      /* Corpo do Conteúdo */
+      .content {
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+      }
+
+      .sec-label {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--pe-laranja);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .sec-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 159, 67, 0.3),
+          transparent
+        );
+      }
+
+      .info-block {
+        background: rgba(255, 255, 255, 0.02);
+        border-left: 4px solid var(--pe-rosa);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        padding: 20px;
+        font-size: 15px;
+        color: var(--txt-secundario);
+      }
+
+      .info-block strong {
+        color: var(--txt-primario);
+      }
+
+      .info-block code {
+        font-family: monospace;
+        font-size: 14px;
+        background: rgba(0, 242, 254, 0.1);
+        color: var(--pe-ciano);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      /* Cartão de Sintaxe */
+      .syntax-card {
+        background: #0c1220;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      .syntax-hdr {
+        background: var(--bg-card-header);
+        padding: 12px 20px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--txt-secundario);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .syntax-rows {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .srow {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .slabel {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--txt-secundario);
+        min-width: 90px;
+      }
+
+      .scode {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 14px;
+        background: #111827;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        padding: 8px 16px;
+        flex: 1;
+        color: var(--txt-primario);
+      }
+
+      .cmd-kw {
+        color: var(--pe-ciano);
+        font-weight: bold;
+      }
+      .action {
+        color: #a8ffb2;
+      }
+      .name {
+        color: var(--pe-laranja);
+      }
+      .obj {
+        color: #e2e8f0;
+        text-decoration: underline;
+        text-decoration-color: var(--pe-ciano);
+      }
+      .em {
+        color: var(--pe-rosa);
+        font-style: italic;
+      }
+
+      /* Grelha de Regras */
+      .rules-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      @media (max-width: 768px) {
+        .rules-grid {
+          grid-template-columns: 1fr;
+        }
+        .dd {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      .rule {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        transition: var(--transicao);
+      }
+
+      .rule:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .rule i {
+        font-size: 24px;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .rule-t {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--txt-primario);
+      }
+
+      .rule-d {
+        font-size: 13px;
+        color: var(--txt-secundario);
+      }
+
+      /* Cores Temáticas das Regras */
+      .rule.info i,
+      .rule.info .rule-t {
+        color: var(--pe-ciano);
+      }
+      .rule.success i,
+      .rule.success .rule-t {
+        color: var(--pe-sucesso);
+      }
+      .rule.warn i,
+      .rule.warn .rule-t {
+        color: var(--pe-laranja);
+      }
+      .rule.danger i,
+      .rule.danger .rule-t {
+        color: var(--pe-rosa);
+      }
+
+      /* Painel O que Fazer vs Evitar (Do & Don't) */
+      .dd {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .do-col,
+      .dn-col {
+        border-radius: var(--border-radius);
+        background: #0c1220;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+      }
+
+      .do-col {
+        border-top: 3px solid var(--pe-sucesso);
+      }
+      .dn-col {
+        border-top: 3px solid var(--pe-perigo);
+      }
+
+      .col-hdr {
+        padding: 14px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--bg-card-header);
+      }
+
+      .do-col .col-hdr {
+        color: var(--pe-sucesso);
+      }
+      .dn-col .col-hdr {
+        color: var(--pe-perigo);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .do-col .dot {
+        background: var(--pe-sucesso);
+        box-shadow: 0 0 8px var(--pe-sucesso);
+      }
+      .dn-col .dot {
+        background: var(--pe-perigo);
+        box-shadow: 0 0 8px var(--pe-perigo);
+      }
+
+      .col-items {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .entry {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .entry-code {
+        font-family: monospace;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .do-col .entry-code {
+        color: #a8ffb2;
+        border: 1px solid rgba(46, 196, 182, 0.15);
+      }
+      .dn-col .entry-code {
+        color: #ffb3b3;
+        border: 1px solid rgba(230, 57, 70, 0.15);
+        text-decoration: line-through;
+      }
+
+      .entry-note {
+        font-size: 12px;
+        color: var(--txt-secundario);
+        padding-left: 4px;
+      }
+
+      /* Exemplos em Contexto */
+      .exs {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .ex {
+        background: #0c1220;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      .ex-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        background: var(--bg-card-header);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .ex-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .ex.good {
+        border-left: 3px solid var(--pe-sucesso);
+      }
+      .ex.good .ex-label {
+        color: var(--pe-sucesso);
+      }
+      .ex.bad {
+        border-left: 3px solid var(--pe-perigo);
+      }
+      .ex.bad .ex-label {
+        color: var(--pe-perigo);
+      }
+
+      .ex-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+      .ex.good .ex-dot {
+        background: var(--pe-sucesso);
+      }
+      .ex.bad .ex-dot {
+        background: var(--pe-perigo);
+      }
+
+      .ex-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .ex-line {
+        font-family: monospace;
+        font-size: 14px;
+        color: var(--txt-primario);
+      }
+
+      .ex-line .kw {
+        color: var(--pe-ciano);
+        font-weight: bold;
+      }
+      .ex-line .strike {
+        text-decoration: line-through;
+        color: rgba(230, 57, 70, 0.7);
+      }
+
+      .ex-why {
+        font-size: 12px;
+        color: var(--pe-laranja);
+        margin-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+        padding-top: 8px;
+      }
+
+      /* Dica Final */
+      .tip {
+        margin-top: 10px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 159, 67, 0.1),
+          rgba(255, 71, 126, 0.05)
+        );
+        border: 1px solid rgba(255, 159, 67, 0.2);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .tip i {
+        font-size: 24px;
+        color: var(--pe-laranja);
+        flex-shrink: 0;
+      }
+
+      .tip p {
+        font-size: 14px;
+        color: var(--txt-secundario);
+      }
+
+      .tip strong {
+        color: var(--pe-laranja);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="logo.gif"
+          alt="Puerto Esperanza Logo"
+          class="logo-server"
+        />
+        <div class="badge">Guia de Roleplay</div>
+        <h1>Como usar o <span>/me</span> no Puerto Esperanza</h1>
+        <p>
+          Domina as ações de roleplay em texto — regras, exemplos e boas
+          práticas
+        </p>
+        <div class="cmd-box">/me [ação]</div>
+      </div>
+
+      <div class="content">
+        <div>
+          <div class="sec-label">O que é o /me</div>
+          <div class="info-block">
+            O comando <code>/me</code> serve para descrever uma
+            <strong>ação física ou emocional</strong> do teu personagem no mundo
+            do roleplay. Em vez de falares diretamente,
+            <em>descreves o que o teu char faz</em>. A mensagem aparece no chat
+            no formato <code>/me [nome] ação</code>, visível para todos os
+            jogadores próximos.
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Sintaxe e estrutura</div>
+          <div class="syntax-card">
+            <div class="syntax-hdr">Formato do comando</div>
+            <div class="syntax-rows">
+              <div class="srow">
+                <div class="slabel">Básico</div>
+                <div class="scode">
+                  <span class="cmd-kw">/me</span>
+                  <span class="action">coloca as mãos para cima devagar</span>
+                </div>
+              </div>
+              <div class="srow">
+                <div class="slabel">Com nome</div>
+                <div class="scode">
+                  <span class="cmd-kw">/me</span>
+                  <span class="name">[Nome do char]</span>
+                  <span class="action">puxa o casaco e vira-se</span>
+                </div>
+              </div>
+              <div class="srow">
+                <div class="slabel">Com objeto</div>
+                <div class="scode">
+                  <span class="cmd-kw">/me</span>
+                  <span class="action">pega no</span>
+                  <span class="obj">[cartão de identificação]</span>
+                  <span class="action">e estende ao polícia</span>
+                </div>
+              </div>
+              <div class="srow">
+                <div class="slabel">Com emoção</div>
+                <div class="scode">
+                  <span class="cmd-kw">/me</span>
+                  <span class="action">sorri nervosamente,</span>
+                  <span class="em">visivelmente assustado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Regras fundamentais</div>
+          <div class="rules-grid">
+            <div class="rule info">
+              <i class="ti ti-pencil"></i>
+              <div class="rule-t">3.ª pessoa sempre</div>
+              <div class="rule-d">
+                Usa sempre a 3.ª pessoa. O /me descreve o char, não falas com
+                ele. Nunca "eu faço", mas sim "faz" ou "ele faz".
+              </div>
+            </div>
+            <div class="rule success">
+              <i class="ti ti-theater"></i>
+              <div class="rule-t">Ações realistas</div>
+              <div class="rule-d">
+                Só descveves o que o teu personagem fisicamente pode fazer. Nada
+                de poderes ou resultados impossíveis.
+              </div>
+            </div>
+            <div class="rule warn">
+              <i class="ti ti-users"></i>
+              <div class="rule-t">Sem forçar outros</div>
+              <div class="rule-d">
+                Nunca determines o resultado da ação noutros jogadores. Descreve
+                a tentativa, não o sucesso.
+              </div>
+            </div>
+            <div class="rule danger">
+              <i class="ti ti-ban"></i>
+              <div class="rule-t">Sem godmod / powergame</div>
+              <div class="rule-d">
+                Não podes ser invencível, omnisciente ou saber coisas que o teu
+                char não saberia.
+              </div>
+            </div>
+            <div class="rule info">
+              <i class="ti ti-clock"></i>
+              <div class="rule-t">Tempo proporcional</div>
+              <div class="rule-d">
+                As ações devem levar tempo proporcional ao que descreves. Um /me
+                de cirurgia não é instantâneo.
+              </div>
+            </div>
+            <div class="rule success">
+              <i class="ti ti-eye"></i>
+              <div class="rule-t">Detalhes visuais</div>
+              <div class="rule-d">
+                Quanto mais descritivo e visual for o /me, melhor a imersão para
+                todos. Evita /me genérico e vago.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">O que fazer e o que evitar</div>
+          <div class="dd">
+            <div class="do-col">
+              <div class="col-hdr"><span class="dot"></span>Faz assim</div>
+              <div class="col-items">
+                <div class="entry">
+                  <div class="entry-code">
+                    /me tenta abrir a porta com o ombro
+                  </div>
+                  <div class="entry-note">
+                    Tentativa — não força o resultado
+                  </div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">
+                    /me examina o doc., franzindo o sobrolho
+                  </div>
+                  <div class="entry-note">
+                    Detalhe visual com emoção incluída
+                  </div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">
+                    /me retira a carteira com dois dedos
+                  </div>
+                  <div class="entry-note">Específico, calmo, imersivo</div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">/me apoia-se na parede, ofegante</div>
+                  <div class="entry-note">Realista e contextualizado</div>
+                </div>
+              </div>
+            </div>
+            <div class="dn-col">
+              <div class="col-hdr"><span class="dot"></span>Nunca assim</div>
+              <div class="col-items">
+                <div class="entry">
+                  <div class="entry-code">
+                    /me desmaia o polícia com um soco
+                  </div>
+                  <div class="entry-note">
+                    Forças o resultado noutro jogador
+                  </div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">/me eu ando pela rua</div>
+                  <div class="entry-note">1.ª pessoa — uso incorreto</div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">/me sabe que ele é culpado</div>
+                  <div class="entry-note">
+                    Metagaming — info que o char não tem
+                  </div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">
+                    /me esquiva todas as balas facilmente
+                  </div>
+                  <div class="entry-note">Godmod / powergame</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-label">Exemplos em contexto</div>
+          <div class="exs">
+            <div class="ex good">
+              <div class="ex-bar">
+                <div class="ex-dot"></div>
+                <div class="ex-label">Bom exemplo — abordagem policial</div>
+              </div>
+              <div class="ex-body">
+                <div class="ex-line">
+                  <span class="kw">/me</span> coloca as mãos bem visíveis,
+                  voltadas para cima, e para de se mexer
+                </div>
+                <div class="ex-line">
+                  <span class="kw">/me</span> vira a cabeça devagar para o
+                  agente, expressão séria
+                </div>
+                <div class="ex-line">
+                  <span class="kw">/me</span> retira a carteira do bolso com
+                  dois dedos, sem movimentos bruscos
+                </div>
+                <div class="ex-why">
+                  Detalhado, realista e não força o resultado nos outros
+                </div>
+              </div>
+            </div>
+
+            <div class="ex good">
+              <div class="ex-bar">
+                <div class="ex-dot"></div>
+                <div class="ex-label">Bom exemplo — mecânico a trabalhar</div>
+              </div>
+              <div class="ex-body">
+                <div class="ex-line">
+                  <span class="kw">/me</span> abre o capô do veículo e apoia-o
+                  com o varão
+                </div>
+                <div class="ex-line">
+                  <span class="kw">/me</span> inclina-se sobre o motor, lanterna
+                  na mão esquerda, a inspecionar os cabos
+                </div>
+                <div class="ex-line">
+                  <span class="kw">/me</span> aperta um parafuso com a chave de
+                  fendas, franzindo o sobrolho
+                </div>
+                <div class="ex-why">
+                  Imersivo, sequencial e visualmente descritivo
+                </div>
+              </div>
+            </div>
+
+            <div class="ex bad">
+              <div class="ex-bar">
+                <div class="ex-dot"></div>
+                <div class="ex-label">Mau exemplo — powergame e metagaming</div>
+              </div>
+              <div class="ex-body">
+                <div class="ex-line">
+                  <span class="kw">/me</span>
+                  <span class="strike"
+                    >agarra o polícia pelo pescoço e imobiliza-o no chão</span
+                  >
+                </div>
+                <div class="ex-line">
+                  <span class="kw">/me</span>
+                  <span class="strike"
+                    >descobre que ele tem droga antes de o revistar</span
+                  >
+                </div>
+                <div class="ex-why">
+                  Força ações noutros jogadores e usa informação que o char não
+                  poderia ter
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip">
+          <i class="ti ti-bulb"></i>
+          <p>
+            <strong>Dica final:</strong> O /me é a base de um bom roleplay.
+            Quanto mais <strong>descritivo, realista e respeitoso</strong> com
+            os outros jogadores, melhor a experiência para toda a gente em
+            <strong>Puerto Esperanza</strong>. Consulta sempre o nosso
+            regulamento para regras adicionais específicas do servidor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
