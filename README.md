@@ -1,8 +1,8 @@
-# 🌴 Puerto Esperanza - Guia /me
+# 🌴 Puerto Esperanza - Guia /me e /do
 
-Guia oficial em formato web sobre como utilizar corretamente o comando `/me` no servidor de GTA V FiveM **Puerto Esperanza**.
+Guia oficial em formato web sobre como utilizar corretamente os comandos `/me`e `/do`no servidor de GTA V FiveM **Puerto Esperanza**.
 
-🔗 **Acede aqui ao site:** [Insere o link do teu GitHub Pages aqui]
+🔗 **Acede aqui ao site:** https://devtiagopereira.github.io/puerto-esperanza-guia-me/
 
 ---
 
