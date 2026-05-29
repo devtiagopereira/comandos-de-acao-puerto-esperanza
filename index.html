@@ -65,7 +65,7 @@
             rgba(255, 71, 126, 0.15),
             transparent
           );
-        padding: 40px 30px;
+        padding: 50px 30px;
         text-align: center;
         border-bottom: 2px solid rgba(0, 242, 254, 0.2);
         position: relative;
@@ -79,7 +79,7 @@
       }
 
       .badge {
-        display: block;
+        display: inline-block;
         background: linear-gradient(90deg, var(--pe-rosa), var(--pe-laranja));
         color: #fff;
         font-size: 11px;
@@ -93,9 +93,9 @@
       }
 
       .header h1 {
-        font-size: 28px;
+        font-size: 32px;
         font-weight: 700;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         letter-spacing: 0.5px;
       }
 
@@ -105,9 +105,12 @@
       }
 
       .header p {
-        font-size: 15px;
+        font-size: 16px;
         color: var(--txt-secundario);
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .cmd-container {
@@ -124,7 +127,7 @@
         font-weight: bold;
         background: #070a12;
         border-radius: 8px;
-        padding: 8px 20px;
+        padding: 10px 24px;
         box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.02);
       }
 
@@ -140,7 +143,7 @@
 
       /* Corpo do Conteúdo */
       .content {
-        padding: 40px 30px;
+        padding: 50px 40px;
         display: flex;
         flex-direction: column;
         gap: 45px;
@@ -152,7 +155,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--pe-laranja);
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -172,14 +175,20 @@
       .info-block {
         background: rgba(255, 255, 255, 0.02);
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        padding: 20px;
+        padding: 25px;
         font-size: 15px;
         color: var(--txt-secundario);
+      }
+
+      .info-block.mecanica {
+        border-left: 4px solid var(--pe-laranja);
+        background: rgba(255, 159, 67, 0.03);
       }
 
       .info-block.me {
         border-left: 4px solid var(--pe-rosa);
       }
+      
       .info-block.do {
         border-left: 4px solid var(--pe-roxo);
       }
@@ -201,6 +210,72 @@
       .info-block.do code {
         background: rgba(157, 78, 221, 0.15);
         color: #c8b6ff;
+      }
+
+      /* Versus Table / Tabela Comparativa */
+      .vs-card {
+        background: #0c1220;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      .vs-hdr {
+        background: var(--bg-card-header);
+        padding: 14px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--txt-primario);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .vs-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .vs-col {
+        padding: 25px;
+      }
+
+      .vs-col:first-child {
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .vs-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .vs-title.me {
+        color: var(--pe-ciano);
+      }
+      .vs-title.do {
+        color: var(--pe-roxo);
+      }
+
+      .vs-list {
+        list-style: none;
+        font-size: 14px;
+        color: var(--txt-secundario);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .vs-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .vs-list li::before {
+        content: "•";
+        color: var(--pe-laranja);
+        font-weight: bold;
       }
 
       /* Syntax Grid */
@@ -253,7 +328,7 @@
       }
 
       .syntax-items {
-        padding: 20px;
+        padding: 25px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -266,27 +341,18 @@
         gap: 6px;
       }
 
-      .syntax-meta {
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--txt-secundario);
-      }
-
       .syntax-terminal {
         font-family: "Courier New", Courier, monospace;
         font-size: 13.5px;
         background: #060911;
         border: 1px solid rgba(255, 255, 255, 0.03);
         border-radius: 6px;
-        padding: 10px 14px;
+        padding: 12px 16px;
         color: #e2e8f0;
         white-space: normal;
         word-break: break-word;
       }
 
-      /* Destaques dentro do Terminal */
       .t-cmd {
         font-weight: bold;
       }
@@ -300,122 +366,23 @@
       .t-action {
         color: #a8ffb2;
       }
-      .t-object {
-        color: #ffb3ff;
-        text-decoration: underline;
-        text-decoration-color: rgba(255, 179, 255, 0.3);
-      }
       .t-status {
         color: #bde0fe;
         font-style: italic;
-      }
-      .t-ask {
-        color: var(--pe-laranja);
-      }
-
-      .t-tag {
-        font-size: 10px;
-        font-family: sans-serif;
-        background: rgba(255, 255, 255, 0.08);
-        color: #94a3b8;
-        padding: 1px 4px;
-        border-radius: 3px;
-        margin: 0 2px;
-        font-style: normal;
-        font-weight: normal;
-        text-decoration: none !important;
-        display: inline-block;
-      }
-
-      /* Versus Table / Tabela Comparativa */
-      .vs-card {
-        background: #0c1220;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: var(--border-radius);
-        overflow: hidden;
-      }
-
-      .vs-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .vs-col {
-        padding: 20px;
-      }
-
-      .vs-col:first-child {
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .vs-title {
-        font-size: 16px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .vs-title.me {
-        color: var(--pe-ciano);
-      }
-      .vs-title.do {
-        color: var(--pe-roxo);
-      }
-
-      .vs-list {
-        list-style: none;
-        font-size: 14px;
-        color: var(--txt-secundario);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .vs-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .vs-list li::before {
-        content: "•";
-        color: var(--pe-laranja);
-        font-weight: bold;
       }
 
       /* Grelha de Regras */
       .rules-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-      }
-
-      @media (max-width: 768px) {
-        .rules-grid {
-          grid-template-columns: 1fr;
-        }
-        .syntax-grid {
-          grid-template-columns: 1fr;
-        }
-        .dd {
-          grid-template-columns: 1fr !important;
-        }
-        .vs-grid {
-          grid-template-columns: 1fr;
-        }
-        .vs-col:first-child {
-          border-right: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        gap: 20px;
       }
 
       .rule {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: var(--border-radius);
-        padding: 20px;
+        padding: 25px;
         transition: var(--transicao);
       }
 
@@ -442,27 +409,11 @@
         color: var(--txt-secundario);
       }
 
-      /* Cores Temáticas das Regras */
-      .rule.info i,
-      .rule.info .rule-t {
-        color: var(--pe-ciano);
-      }
-      .rule.success i,
-      .rule.success .rule-t {
-        color: var(--pe-sucesso);
-      }
-      .rule.warn i,
-      .rule.warn .rule-t {
-        color: var(--pe-laranja);
-      }
-      .rule.danger i,
-      .rule.danger .rule-t {
-        color: var(--pe-rosa);
-      }
-      .rule.purple i,
-      .rule.purple .rule-t {
-        color: #c8b6ff;
-      }
+      /* Cores das Regras */
+      .rule.info i, .rule.info .rule-t { color: var(--pe-ciano); }
+      .rule.success i, .rule.success .rule-t { color: var(--pe-sucesso); }
+      .rule.warn i, .rule.warn .rule-t { color: var(--pe-laranja); }
+      .rule.purple i, .rule.purple .rule-t { color: #c8b6ff; }
 
       /* Painel O que Fazer vs Evitar (Do & Don't) */
       .dd {
@@ -471,20 +422,15 @@
         gap: 20px;
       }
 
-      .do-col,
-      .dn-col {
+      .do-col, .dn-col {
         border-radius: var(--border-radius);
         background: #0c1220;
         border: 1px solid rgba(255, 255, 255, 0.05);
         overflow: hidden;
       }
 
-      .do-col {
-        border-top: 3px solid var(--pe-sucesso);
-      }
-      .dn-col {
-        border-top: 3px solid var(--pe-perigo);
-      }
+      .do-col { border-top: 3px solid var(--pe-sucesso); }
+      .dn-col { border-top: 3px solid var(--pe-perigo); }
 
       .col-hdr {
         padding: 14px 20px;
@@ -498,46 +444,28 @@
         background: var(--bg-card-header);
       }
 
-      .do-col .col-hdr {
-        color: var(--pe-sucesso);
-      }
-      .dn-col .col-hdr {
-        color: var(--pe-perigo);
-      }
-
-      .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-      }
-      .do-col .dot {
-        background: var(--pe-sucesso);
-        box-shadow: 0 0 8px var(--pe-sucesso);
-      }
-      .dn-col .dot {
-        background: var(--pe-perigo);
-        box-shadow: 0 0 8px var(--pe-perigo);
-      }
+      .do-col .col-hdr { color: var(--pe-sucesso); }
+      .dn-col .col-hdr { color: var(--pe-perigo); }
 
       .col-items {
-        padding: 20px;
+        padding: 25px;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 18px;
       }
 
       .entry {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
       }
 
       .entry-code {
         font-family: monospace;
         font-size: 13px;
-        padding: 8px 12px;
+        padding: 10px 14px;
         border-radius: 6px;
-        background: rgba(255, 255, 255, 0.02);
+        background: #060911;
       }
 
       .do-col .entry-code {
@@ -556,98 +484,8 @@
         padding-left: 4px;
       }
 
-      /* Exemplos em Contexto */
-      .exs {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .ex {
-        background: #0c1220;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: var(--border-radius);
-        overflow: hidden;
-      }
-
-      .ex-bar {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 20px;
-        background: var(--bg-card-header);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .ex-label {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-      }
-
-      .ex.good {
-        border-left: 3px solid var(--pe-sucesso);
-      }
-      .ex.good .ex-label {
-        color: var(--pe-sucesso);
-      }
-      .ex.bad {
-        border-left: 3px solid var(--pe-perigo);
-      }
-      .ex.bad .ex-label {
-        color: var(--pe-perigo);
-      }
-
-      .ex-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-      }
-      .ex.good .ex-dot {
-        background: var(--pe-sucesso);
-      }
-      .ex.bad .ex-dot {
-        background: var(--pe-perigo);
-      }
-
-      .ex-body {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .ex-line {
-        font-family: monospace;
-        font-size: 14px;
-        color: var(--txt-primario);
-      }
-
-      .ex-line .kw {
-        color: var(--pe-ciano);
-        font-weight: bold;
-      }
-      .ex-line .kw-do {
-        color: var(--pe-roxo);
-        font-weight: bold;
-      }
-      .ex-line .strike {
-        text-decoration: line-through;
-        color: rgba(230, 57, 70, 0.7);
-      }
-
-      .ex-why {
-        font-size: 12px;
-        color: var(--pe-laranja);
-        margin-top: 8px;
-        border-top: 1px solid rgba(255, 255, 255, 0.03);
-        padding-top: 8px;
-      }
-
       /* Dica Final */
       .tip {
-        margin-top: 10px;
         background: linear-gradient(
           90deg,
           rgba(255, 159, 67, 0.1),
@@ -655,7 +493,7 @@
         );
         border: 1px solid rgba(255, 159, 67, 0.2);
         border-radius: var(--border-radius);
-        padding: 20px;
+        padding: 25px;
         display: flex;
         align-items: flex-start;
         gap: 15px;
@@ -676,6 +514,30 @@
         color: var(--pe-laranja);
         font-weight: 600;
       }
+
+      /* Responsividade Total */
+      @media (max-width: 768px) {
+        body {
+          padding: 20px 10px;
+        }
+        .header {
+          padding: 40px 20px;
+        }
+        .header h1 {
+          font-size: 26px;
+        }
+        .content {
+          padding: 30px 20px;
+          gap: 35px;
+        }
+        .syntax-grid, .vs-grid, .dd, .rules-grid {
+          grid-template-columns: 1fr;
+        }
+        .vs-col:first-child {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+      }
     </style>
   </head>
   <body>
@@ -689,8 +551,8 @@
         <div class="badge">Guia de Roleplay</div>
         <h1>Comandos de Ação no <span>Puerto Esperanza</span></h1>
         <p>
-          Aprende a usar o /me e o /do para enriquecer a narrativa e imersão do
-          teu roleplay
+          Aprende a usar o /me e o /do para enriquecer a narrativa e a imersão do
+          teu roleplay.
         </p>
         <div class="cmd-container">
           <div class="cmd-box me">/me [ação imediata]</div>
@@ -699,10 +561,21 @@
       </div>
 
       <div class="content">
+        <!-- Nova Secção: Ultrapassar Limitações Técnicas -->
+        <div>
+          <div class="sec-label">A Utilidade Oculta dos Comandos</div>
+          <div class="info-block mecanica">
+            Os comandos <code>/me</code> e <code>/do</code> têm uma função vital: 
+            <strong>representar ações ou estados quando as mecânicas nativas do GTA V ou do servidor não o permitem fazer automaticamente</strong>. 
+            Se o jogo não tem a animação exata ou a mecânica específica para o que pretendes, deves usar a escrita para manter a verdade factual da cena sem prejudicar a imersão.
+          </div>
+        </div>
+
+        <!-- Resumo Comparativo -->
         <div>
           <div class="sec-label">Resumo: /me vs /do</div>
           <div class="vs-card">
-            <div class="syntax-hdr">Qual é a diferença?</div>
+            <div class="vs-hdr">Qual é a diferença?</div>
             <div class="vs-grid">
               <div class="vs-col">
                 <div class="vs-title me">
@@ -710,8 +583,7 @@
                 </div>
                 <ul class="vs-list">
                   <li>
-                    Descreve as <strong>ações físicas e imediatas</strong> do
-                    teu char.
+                    Descreve as <strong>ações físicas e imediatas</strong> do teu char.
                   </li>
                   <li>
                     Representa um movimento direto ou uma reação momentânea.
@@ -727,16 +599,13 @@
                 </div>
                 <ul class="vs-list">
                   <li>
-                    Descreve ações contínuas, o ambiente ou estado das coisas.
+                    Descreve ações contínuas, o ambiente ou o estado das coisas.
                   </li>
                   <li>
                     Representa algo prolongado, biológico ou factual da cena.
                   </li>
                   <li>
-                    Exemplo:
-                    <em
-                      >/do continua a sangrar do braço</em
-                    >
+                    Exemplo: <em>/do continua a sangrar do braço direito</em>
                   </li>
                 </ul>
               </div>
@@ -744,6 +613,7 @@
           </div>
         </div>
 
+        <!-- Explicações Detalhadas -->
         <div>
           <div class="sec-label">O que é e como usar o /me</div>
           <div class="info-block me">
@@ -760,42 +630,35 @@
           <div class="info-block do">
             O comando <code>/do</code> serve para relatar ações contínuas,
             estados do ambiente ou detalhes de objetos. É a ferramenta ideal
-            para prolongar efeitos na cena.
+            para prolongar efeitos na cena e contextualizar o ambiente ao redor.
           </div>
         </div>
 
+        <!-- Sintaxe dos Terminais -->
         <div>
           <div class="sec-label">Sintaxe Correta dos Comandos</div>
           <div class="syntax-grid">
             <div class="syntax-block me-theme">
               <div class="syntax-block-hdr">
-                Comando /me <span>Ação  Imediata</span>
+                Comando /me <span>Ação Imediata</span>
               </div>
               <div class="syntax-items">
                 <div class="syntax-row">
                   <div class="syntax-terminal">
                     <span class="t-cmd">/me</span>
-                    <span class="t-action"
-                      >desvia o olhar para o chão</span
-                    >
+                    <span class="t-action">desvia o olhar para o chão</span>
                   </div>
                 </div>
-
                 <div class="syntax-row">
                   <div class="syntax-terminal">
                     <span class="t-cmd">/me</span>
-                    <span class="t-action"
-                      >solta um sorriso discreto</span
-                    >
+                    <span class="t-action">solta um sorriso discreto</span>
                   </div>
                 </div>
-                
                 <div class="syntax-row">
                   <div class="syntax-terminal">
                     <span class="t-cmd">/me</span>
-                    <span class="t-action"
-                      >olha de lado, franzindo o sobrolho</span
-                    >
+                    <span class="t-action">olha de lado, franzindo o sobrolho</span>
                   </div>
                 </div>
               </div>
@@ -807,30 +670,21 @@
               </div>
               <div class="syntax-items">
                 <div class="syntax-row">
-                  
                   <div class="syntax-terminal">
                     <span class="t-cmd">/do</span>
-                    <span class="t-status"
-                      >a sangrar
+                    <span class="t-status">a sangrar abundantemente</span>
                   </div>
                 </div>
                 <div class="syntax-row">
-                  
                   <div class="syntax-terminal">
                     <span class="t-cmd">/do</span>
-                    <span class="t-status"
-                      >a tremer compulsivamente devido ao estado de choque
-                  </div>
-
-                  <div class="syntax-terminal">
-                    <span class="t-cmd">/do</span>
-                    <span class="t-status"
-                      >inconsciente e sem reação
+                    <span class="t-status">a tremer compulsivamente devido ao estado de choque</span>
                   </div>
                 </div>
                 <div class="syntax-row">
-                  
-                  
+                  <div class="syntax-terminal">
+                    <span class="t-cmd">/do</span>
+                    <span class="t-status">inconsciente e sem reação aos estímulos</span>
                   </div>
                 </div>
               </div>
@@ -838,6 +692,37 @@
           </div>
         </div>
 
+        <!-- Certo vs Errado -->
+        <div>
+          <div class="sec-label">Exemplos de Prática Diária</div>
+          <div class="dd">
+            <div class="do-col">
+              <div class="col-hdr">Utilização Correta</div>
+              <div class="col-items">
+                <div class="entry">
+                  <div class="entry-code">/me estende o braço para entregar a chave</div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">/do pulsação fraca e respiração bastante lenta</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dn-col">
+              <div class="col-hdr">O que deves evitar</div>
+              <div class="col-items">
+                <div class="entry">
+                  <div class="entry-code">/me sente-se desmaiado no banco</div>
+                </div>
+                <div class="entry">
+                  <div class="entry-code">/do podes parar de fazer anti-rp? chama staff</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regras Fundamentais -->
         <div>
           <div class="sec-label">Regras fundamentais (/me e /do)</div>
           <div class="rules-grid">
@@ -847,7 +732,7 @@
               <div class="rule-d">
                 Tanto o /me como o /do devem ser escritos na 3.ª pessoa. Os
                 comandos descrevem a cena de forma narrativa. Nunca uses "eu
-                faço", "olhar", mas sim "faz", "olha".
+                faço", mas sim "faz", "olha".
               </div>
             </div>
            
@@ -857,7 +742,7 @@
               <div class="rule-d">
                 Lembra-te: tudo o que indica um processo que continua a
                 acontecer ao longo do tempo (sangramentos, estados
-                médicos) deve ir no /do.
+                médicos) deve ir obrigatoriamente no /do.
               </div>
             </div>
             
@@ -866,22 +751,21 @@
               <div class="rule-t">Sem Chat de Discussão</div>
               <div class="rule-d">
                 Os comandos /me e /do servem estritamente para o roleplay. Nunca
-                os uses para discutir fora do personagem (OOC). Usa o /ooc para
-                isso.
+                os uses para discutir fora do personagem (OOC). Usa os canais próprios para isso.
               </div>
             </div>
+
             <div class="rule success">
               <i class="ti ti-eye"></i>
               <div class="rule-t">Detalhes imersivos</div>
               <div class="rule-d">
-                Quanto mais rico for o detalhe visual do teu /me ou o contexto contínuo do teu /do, melhor será a experiência coletiva.
+                Quanto mais rico for o detalhe visual do teu /me ou o contexto contínuo do teu /do, melhor será a experiência coletiva de quem joga contigo.
               </div>
             </div>
           </div>
         </div>
 
-        
-
+        <!-- Dica Final -->
         <div class="tip">
           <i class="ti ti-bulb"></i>
           <p>
