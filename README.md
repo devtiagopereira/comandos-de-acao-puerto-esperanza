@@ -2,7 +2,7 @@
 
 Guia oficial em formato web sobre como utilizar corretamente os comandos `/me`e `/do`no servidor de GTA V FiveM **Puerto Esperanza**.
 
-🔗 **Acede aqui ao site:** https://devtiagopereira.github.io/puerto-esperanza-guia-me/
+🔗 **Acede aqui ao site:** https://devtiagopereira.github.io/comandos-de-acao-puerto-esperanza/
 
 ---
 
